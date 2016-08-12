@@ -65,7 +65,7 @@ angular.module("cart", [])
         }
     };
 })
-.controller("cartCtrl", function($scope, cart, $location){
+.controller("cartCtrl", function($scope, cart){
 	    			
     $scope.cakesInCart = cart.getProducts();
 	
@@ -80,10 +80,6 @@ angular.module("cart", [])
 								
 				$scope.deleteItem = function(id){
 								cart.removeProduct(id);
-				};
-				// hide cart-summary when cart is open				
-				$scope.checkCartOpen = function(){
-								return $location.path() == "/cart" ? true : false;
 				};
 	   
 });
