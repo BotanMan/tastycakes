@@ -1,0 +1,13 @@
+<main class="cake-list-container container"> 
+	 <div class="row row-centered">
+					<div class="cake-item col-xs-12 col-sm-4 col-md-4 col-lg-3 col-centered"  ng-repeat="cake in cakesList">
+										<img ng-src="http://www.cakeiteasy.no/images/medium/{{cake.picture}}.jpg" alt="{{cake.name}}" title="{{cake.name}}">
+										<div class="caption">
+											   <p><strong>{{cake.name}}</strong></p>
+														<span class="price">{{cake.price}}&nbsp;&euro;</span>
+										</div>
+										<ng-include src="'views/cakeDetails.html'"></ng-include>
+						<button class="add-to-cart-btn" ng-click="addCakeToCart(cake)"><span class="glyphicon glyphicon-shopping-cart"></span>Add</button>
+					</div>
+	 </div>
+</main>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="tastyCakes" lang="en" >
+				<head>
+								<meta charset="utf-8">
+								<meta http-equiv="X-UA-Compatible" content="IE=edge">
+								<meta name="viewport" content="width=device-width, initial-scale=1">
+								<title>Cakes</title>
+								<script src="angular/angular.js"></script>
+								<link href="styles/bootstrap/css/bootstrap.css" rel="stylesheet" />
+								<link href="styles/styles.css" rel="stylesheet" /> 
+								<link href='https://fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css'>
+								<script>
+												angular.module("tastyCakes", ["ngRoute", "cart"])
+																.config(function ($routeProvider) {
+
+																				$routeProvider.when("/", {
+																								templateUrl: "views/cakesOverview.html"
+																				});
+
+																				$routeProvider.when("/cart", {
+																								templateUrl: "components/cart/cart.html"
+																				});
+
+																				$routeProvider.otherwise({
+																								templateUrl: "/views/cakesList.html"
+																				});
+																});
+								</script>
+								<script src="angular/angular-route.js"></script>
+								<script src="controllers/tastyCakesCtrl.js"></script>
+								<script src="controllers/cakeDetailsCtrl.js"></script>
+								<script src="components/cart/cart.js"></script>
+				</head>
+    <body ng-controller="tastyCakesCtrl">
+								<header class="header container">
+												<div class="align-header-content row">
+													<h2 class="col-xs-9 col-sm-8 col-md-8 col-lg-10"><a href="#/" class="title">Tasty cakes</a></h2>
+													   <cart-summary class="col-xs-3 col-sm-4 col-md-4 col-lg-2" ng-hide="checkCartOpen()"></cart-summary>
+												</div>
+								</header>
+					   <ng-view ng-hide="cakesList.error"></ng-view>
+					   <div class="alert alert-danger" ng-show="cakesList.error">Error loading cakes list. Please, try again.<div/>
+    </body>
+</html>

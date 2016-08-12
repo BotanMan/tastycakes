@@ -1,0 +1,17 @@
+<div class="cake-details"  ng-controller="cakeDetailsCtrl">
+				<button class="more-info-btn" ng-click="showDetails(cake.id)">
+					   <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" ng-show="loadIndicator"></span>
+					   Details
+	   </button>
+				<div class="cake-info" ng-show="toggleShow()">
+								<h3>{{cakeData.name}}</h3>
+								<strong>Sizes: </strong><span ng-repeat="size in cakeData.cakeSizes">{{size.description}}&nbsp;</span>
+								<p>{{cakeData.description}}</p>
+								<p><strong>Allergens:</strong> &nbsp;{{cakeData.extraInfo.allergens ? "" : "allergen free:)"}}</br>
+											<span ng-repeat="allergen in cakeData.extraInfo.allergens">
+															&nbsp;{{allergen.type}}:{{allergen.value ? " yes" : "no "}}</br>
+											</span>
+								</p>
+				</div>
+    <div class="error alert alert-danger" ng-show="cakeData.error">Error loading details. Try again.</div>
+</div>

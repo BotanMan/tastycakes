@@ -1,0 +1,16 @@
+<main class="cart-container container" ng-controller="cartCtrl">
+	  <div class="row row-centered">
+	   <div class="cart-item col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-repeat="cake in cakesInCart">
+				    <img ng-src="http://www.cakeiteasy.no/images/small/{{cake.picture}}.jpg" alt="{{cake.name}}" title="{{cake.name}}">
+					   <div class="cart-item-details">
+									   <span class="name">{{cake.name}}</span>
+									   <span class="count">{{cake.count}}&nbsp;x&nbsp;</span>
+									   <span class="price">{{cake.price | currency : ""}}&nbsp;&euro;</span>
+					   </div>
+					<button class="remove-cart-item-btn btn btn-danger" ng-click="deleteItem(cake.id)"><span class="glyphicon glyphicon-remove"></span></button>
+	   </div>
+	</div>
+	   <div class="cart-total">
+					   Total:&nbsp;<span class="value">{{calcCartTotal() | currency: ""}}&nbsp;&euro;</span>
+	   </div>
+</main>
